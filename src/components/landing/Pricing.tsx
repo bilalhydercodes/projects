@@ -126,8 +126,9 @@ export default function Pricing() {
         <div className="relative">
           {/* Mobile horizontal carousel */}
           <div className="md:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide px-1 -mx-1" onScroll={(e) => {
-            const scrollLeft = e.currentTarget.scrollLeft;
-            const cardWidth = e.currentTarget.offsetWidth * 0.85;
+            const el = e.currentTarget as HTMLElement;
+            const scrollLeft = el.scrollLeft;
+            const cardWidth = el.offsetWidth * 0.85;
             const newActiveCard = Math.round(scrollLeft / cardWidth);
             setActiveCard(Math.min(newActiveCard, plans.length - 1));
           }}>
@@ -139,7 +140,7 @@ export default function Pricing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-6 flex flex-col flex-shrink-0 w-[85vw] max-w-[280px] snap-start ${plan.[...]`
+                  className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-6 flex flex-col flex-shrink-0 w-[85vw] max-w-[280px] snap-start ${plan.[...]}`
                 >
                   {/* Popular badge */}
                   {plan.badge && (
@@ -271,8 +272,8 @@ export default function Pricing() {
               <button
                 key={i}
                 onClick={() => {
-                  const carousel = document.querySelector('.scrollbar-hide');
-                  if (carousel instanceof HTMLElement) {
+                  const carousel = document.querySelector<HTMLElement>('.scrollbar-hide');
+                  if (carousel) {
                     const cardWidth = carousel.offsetWidth * 0.85;
                     carousel.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
                   }
