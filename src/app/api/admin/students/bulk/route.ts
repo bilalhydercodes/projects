@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import * as XLSX from 'xlsx';
 import bcrypt from 'bcryptjs';
 
+export const dynamic = 'force-dynamic';
+
 interface BulkStudentRow {
   studentName: string;
   dateOfBirth: string;

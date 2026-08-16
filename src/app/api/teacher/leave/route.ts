@@ -3,6 +3,8 @@ import { requireSession } from "@/lib/getRole";
 import prisma from "@/lib/prisma";
 import { triggerTeacherLeaveNotification } from "@/lib/notificationTriggers";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const session = await requireSession(["teacher", "TEACHER"]);

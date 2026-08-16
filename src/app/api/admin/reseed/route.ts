@@ -4,6 +4,8 @@ import { UserRole, UserSex } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { getActiveSchoolId, requireSession } from "@/lib/getRole";
 
+export const dynamic = 'force-dynamic';
+
 // This is a development support operation. It must never be reachable by a
 // regular authenticated user, nor should it select an arbitrary tenant.
 export async function POST(_request: NextRequest) {

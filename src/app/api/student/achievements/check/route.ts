@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/getRole";
 import { checkAndAwardAchievements } from "@/lib/achievementSystem";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const session = await requireSession(["student", "STUDENT", "TEACHER", "SCHOOL_ADMIN", "SUPER_ADMIN"]);

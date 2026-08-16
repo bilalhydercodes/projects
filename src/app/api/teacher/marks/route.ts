@@ -3,6 +3,8 @@ import { getCurrentUserId, requireSession } from "@/lib/getRole";
 import prisma from "@/lib/prisma";
 import { triggerMarksPublishedNotification, triggerExamResultNotification } from "@/lib/notificationTriggers";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const session = await requireSession(["teacher", "TEACHER"]);

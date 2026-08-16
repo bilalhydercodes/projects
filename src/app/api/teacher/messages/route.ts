@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import { getValidRecipients } from "@/lib/messaging";
 import { UserRole } from "@prisma/client";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const session = await requireSession(["teacher", "TEACHER"]);

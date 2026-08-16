@@ -3,6 +3,8 @@ import { requireSession } from "@/lib/getRole";
 import prisma from "@/lib/prisma";
 import { getUnreadNotificationCount } from "@/lib/messaging";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const session = await requireSession();
