@@ -7,6 +7,8 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { authenticateUser, unauthorized } from "@/lib/apiMiddleware";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   const session = await authenticateUser(req);
   if (!session) return unauthorized();

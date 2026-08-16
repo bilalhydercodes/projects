@@ -12,6 +12,8 @@ import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
 import { authenticateUser, authorizeRoles, unauthorized, badRequest } from "@/lib/apiMiddleware";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     // If the DB has zero provider accounts, allow open registration.

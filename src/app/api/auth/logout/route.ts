@@ -8,6 +8,8 @@ import prisma from "@/lib/prisma";
 import { clearAuthCookies } from "@/lib/auth";
 import { hashRefreshToken } from "@/lib/auth";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const refreshToken = req.cookies.get("refresh_token")?.value;

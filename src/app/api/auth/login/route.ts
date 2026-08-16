@@ -17,6 +17,8 @@ import {
 } from "@/lib/auth";
 import { allowAuthRequest } from "@/lib/authRateLimit";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   try {
     const clientKey = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";

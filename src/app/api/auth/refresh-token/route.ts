@@ -12,6 +12,8 @@ import {
 import { rotateRefreshToken } from "@/lib/authSessionService";
 import { allowAuthRequest } from "@/lib/authRateLimit";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   return refresh(req);
 }
