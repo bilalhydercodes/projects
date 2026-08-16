@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Force dynamic rendering for all routes to prevent static generation issues
-  output: 'standalone',
+  // Remove output setting to allow individual route configuration
   experimental: {
     // Opt out of static generation for API routes
     serverComponentsExternalPackages: ['@prisma/client'],
