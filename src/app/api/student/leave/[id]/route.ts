@@ -3,6 +3,8 @@ import { requireSession } from "@/lib/getRole";
 import prisma from "@/lib/prisma";
 import { triggerLeaveApprovedNotification, triggerLeaveRejectedNotification } from "@/lib/notificationTriggers";
 
+export const dynamic = 'force-dynamic';
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
