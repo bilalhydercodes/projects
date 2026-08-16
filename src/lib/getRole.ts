@@ -119,21 +119,26 @@ export function getTenantWhereClause(session: TokenPayload, activeSchoolId?: str
   return { schoolId: session.schoolId ?? undefined };
 }
 
-import { redirect } from "next/navigation";
-
 /**
- * Require a valid session. Redirects to /sign-in if not authenticated.
- * Redirects to / if role is not in allowedRoles.
+ * Require a valid session for programmatic/server usage.
+ * For API routes we DO NOT perform redirects here — instead this function
+ * returns the session payload or throws an Error which the caller should
+ * handle and return the appropriate JSON 401/403 response.
+ *
+ * Use `requireSessionPage` (in src/lib/requireSessionPage.ts) from page/server
+ * components where a redirect is desired.
  */
 export async function requireSession(
   allowedRoles?: AppRole[],
 ): Promise<TokenPayload> {
   const session = await getServerSession();
   if (!session) {
-    redirect("/sign-in");
+    // API callers should catch and return 401
+    throw new Error("UNAUTHENTICATED");
   }
   if (allowedRoles && !allowedRoles.includes(session.role as AppRole)) {
-    redirect("/");
+    // API callers should catch and return 403
+    throw new Error("FORBIDDEN");
   }
   return session;
 }
@@ -162,7 +167,6 @@ export async function isSuperAdmin(): Promise<boolean> {
 
 /**
  * Enhanced Super Admin permission checker.
- * Super Admin has all admin permissions plus additional platform-level capabilities.
  */
 export async function hasSuperAdminAccess(): Promise<boolean> {
   return await isSuperAdmin();
@@ -170,7 +174,6 @@ export async function hasSuperAdminAccess(): Promise<boolean> {
 
 /**
  * Check if user can access any school's data (Super Admin only).
- * Regular admins are restricted to their own school.
  */
 export async function canAccessAnySchool(): Promise<boolean> {
   return await isSuperAdmin();
@@ -178,7 +181,6 @@ export async function canAccessAnySchool(): Promise<boolean> {
 
 /**
  * Check if user can impersonate other users (Super Admin only).
- * This is an enhanced capability beyond regular admin permissions.
  */
 export async function canImpersonateUsers(): Promise<boolean> {
   return await isSuperAdmin();
@@ -186,7 +188,6 @@ export async function canImpersonateUsers(): Promise<boolean> {
 
 /**
  * Check if user can manage platform-level settings (Super Admin only).
- * Regular admins can only manage school-level settings.
  */
 export async function canManagePlatformSettings(): Promise<boolean> {
   return await isSuperAdmin();
@@ -194,7 +195,6 @@ export async function canManagePlatformSettings(): Promise<boolean> {
 
 /**
  * Check if user can view all schools data (Super Admin only).
- * Regular admins can only view their own school data.
  */
 export async function canViewAllSchools(): Promise<boolean> {
   return await isSuperAdmin();
@@ -209,7 +209,6 @@ export async function canManageSubscriptions(): Promise<boolean> {
 
 /**
  * Check if user can access audit logs (Super Admin only).
- * This is an enhanced security capability.
  */
 export async function canAccessAuditLogs(): Promise<boolean> {
   return await isSuperAdmin();
@@ -224,8 +223,6 @@ export async function canManageBackups(): Promise<boolean> {
 
 /**
  * Universal access checker for Super Admin.
- * Returns true for Super Admin regardless of the specific permission.
- * For regular admins, checks against their specific permissions.
  */
 export async function hasPermission(permissionKey: string): Promise<boolean> {
   const isSA = await isSuperAdmin();
@@ -255,8 +252,6 @@ export async function hasPermission(permissionKey: string): Promise<boolean> {
 /**
  * Guards a route/action for School Admins and Super Admin.
  * Super Admin has all admin permissions by default.
- * Optionally checks for a specific granular permission for school admins.
- * If permission is denied, it throws an error or redirects.
  */
 export async function guardSchoolAdmin(permissionKey?: string) {
   const session = await requireSession(["admin", "SCHOOL_ADMIN", "SUPER_ADMIN", "provider"]);
@@ -284,7 +279,6 @@ export async function guardSchoolAdmin(permissionKey?: string) {
 
     const permissions = (adminRecord.permissions as Record<string, boolean>) || {};
     
-    // Check if they have the specific permission or the "all" wildcard permission
     if (!permissions[permissionKey] && !permissions["all"]) {
       throw new Error(`Forbidden: Missing permission '${permissionKey}'`);
     }
@@ -292,4 +286,3 @@ export async function guardSchoolAdmin(permissionKey?: string) {
 
   return session;
 }
-
