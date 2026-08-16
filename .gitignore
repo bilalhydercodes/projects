@@ -39,3 +39,6 @@ next-env.d.ts
 # Docker (not needed for cPanel deployment)
 Dockerfile
 docker-compose.yml
+
+# Additional deployment files
+.env.production

@@ -131,6 +131,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 See [`DEPLOYMENT_GUIDE.md`](DEPLOYMENT_GUIDE.md) for comprehensive deployment instructions including:
 - Render deployment with PostgreSQL
 - Vercel deployment with external databases
+- cPanel deployment for traditional hosting
 - Environment variable configuration
 - Database migration setup
 - Custom domain configuration
@@ -260,5 +261,6 @@ This School Management System demonstrates:
 
 **Mahammad Bilal Hyder**
 - LinkedIn: [linkedin.com/in/mahammad-bilal-hyder-493295356](https://www.linkedin.com/in/mahammad-bilal-hyder-493295356)
-- Email: alphaeduhub360@gmail.com#   p r o j e c t s  
+- Email: alphaeduhub360@gmail.com#   p r o j e c t s 
+ 
  
