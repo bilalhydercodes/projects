@@ -95,7 +95,7 @@ export default function Pricing() {
             Simple, transparent pricing
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">
-            Invest in your school&apos;s{" "}
+            Invest in your school&apos;s {" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
               future
             </span>
@@ -108,14 +108,12 @@ export default function Pricing() {
           <div className="inline-flex items-center gap-3 p-1.5 rounded-2xl border border-white/10 bg-white/5">
             <button
               onClick={() => setYearly(false)}
-              className={`px-5 py-2 rounded-xl text-sm font-medium transition-all ${!yearly ? "bg-white/15 text-white" : "text-white/50 hover:text-white/70"}`}
-            >
+              className={`px-5 py-2 rounded-xl text-sm font-medium transition-all ${!yearly ? "bg-white/15 text-white" : "text-white/50 hover:text-white/70"}`}>
               Monthly
             </button>
             <button
               onClick={() => setYearly(true)}
-              className={`px-5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${yearly ? "bg-white/15 text-white" : "text-white/50 hover:text-white/70"}`}
-            >
+              className={`px-5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${yearly ? "bg-white/15 text-white" : "text-white/50 hover:text-white/70"}`}>
               Yearly
               <span className="px-2 py-0.5 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold">Save 20%</span>
             </button>
@@ -140,8 +138,8 @@ export default function Pricing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-6 flex flex-col flex-shrink-0 w-[85vw] max-w-[280px] snap-start`}
-                >
+                  className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-6 flex flex-col flex-shrink-0 w-[85vw] max-w-[280px] snap-start`}>
+
                   {/* Popular badge */}
                   {plan.badge && (
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold shadow-lg shadow-blue-500/25">
@@ -190,8 +188,7 @@ export default function Pricing() {
                   {/* CTA */}
                   <Link
                     href="/sign-in"
-                    className={`w-full py-2.5 rounded-xl text-xs font-semibold text-center transition-all duration-300 hover:scale-105 ${plan.ctaClass}`}
-                  >
+                    className={`w-full py-2.5 rounded-xl text-xs font-semibold text-center transition-all duration-300 hover:scale-105 ${plan.ctaClass}`}>
                     {plan.cta}
                   </Link>
                 </motion.div>
@@ -208,8 +205,8 @@ export default function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-7 flex flex-col ${plan.badge ? "ring-1 ring-blue-500/30" : ""}`}
-              >
+                className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-7 flex flex-col ${plan.badge ? "ring-1 ring-blue-500/30" : ""}`}>
+
                 {/* Popular badge */}
                 {plan.badge && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold shadow-lg shadow-blue-500/25">
@@ -258,8 +255,7 @@ export default function Pricing() {
                 {/* CTA */}
                 <Link
                   href="/sign-in"
-                  className={`w-full py-3 rounded-2xl text-sm font-semibold text-center transition-all duration-300 hover:scale-105 ${plan.ctaClass}`}
-                >
+                  className={`w-full py-3 rounded-2xl text-sm font-semibold text-center transition-all duration-300 hover:scale-105 ${plan.ctaClass}`}>
                   {plan.cta}
                 </Link>
               </motion.div>
