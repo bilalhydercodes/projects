@@ -140,11 +140,11 @@ export default function Pricing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-6 flex flex-col flex-shrink-0 w-[85vw] max-w-[280px] snap-start ${plan.[...]}`
+                  className={`relative rounded-3xl border ${plan.border} bg-gradient-to-br ${plan.color} backdrop-blur-sm p-6 flex flex-col flex-shrink-0 w-[85vw] max-w-[280px] snap-start`}
                 >
                   {/* Popular badge */}
                   {plan.badge && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold shadow-lg shadow-b[...]"
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold shadow-lg shadow-blue-500/25">
                       {plan.badge}
                     </div>
                   )}
@@ -212,7 +212,7 @@ export default function Pricing() {
               >
                 {/* Popular badge */}
                 {plan.badge && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold shadow-lg shadow-blu[...]"
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold shadow-lg shadow-blue-500/25">
                     {plan.badge}
                   </div>
                 )}
