@@ -3,6 +3,8 @@ import { getServerSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { LeaveStatus } from "@prisma/client";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     // Use a safe session check that doesn't perform redirects during build-time.
